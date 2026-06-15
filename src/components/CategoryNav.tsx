@@ -12,20 +12,20 @@ const categoryItems = [
 
 export default function CategoryNav() {
   return (
-    <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
+    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
       {categoryItems.map((item) => (
         <Link
           key={item.label}
           to="/products"
-          className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 group"
+          className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 group"
         >
           <div
-            className={`w-20 h-20 md:w-24 md:h-24 ${item.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+            className={`w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 ${item.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
           >
-            <item.icon className="w-10 h-10 md:w-12 md:h-12 text-white" />
+            <item.icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
           </div>
-          <span className="text-lg font-medium text-gray-700 text-center">{item.label}</span>
-          <span className="text-base text-gray-400 text-center">{item.sublabel}</span>
+          <span className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-gray-700 text-center">{item.label}</span>
+          <span className="text-xs sm:text-sm md:text-base text-gray-400 text-center hidden sm:inline">{item.sublabel}</span>
         </Link>
       ))}
     </div>

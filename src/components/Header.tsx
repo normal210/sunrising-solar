@@ -37,15 +37,16 @@ export default function Header() {
           scrolled ? "shadow-lg" : "shadow-sm"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between h-28 md:h-32 px-4">
-          <Link to="/" className="flex items-center gap-4 group">
+        <div className="container mx-auto flex items-center justify-between h-20 md:h-28 px-4">
+          <Link to="/" className="flex items-center gap-2 md:gap-4 group">
             <img
               src="./logo.png"
               alt="南京旭日扬光光伏科技有限公司"
-              className="h-24 md:h-28 w-auto object-contain"
+              className="h-14 md:h-20 lg:h-24 w-auto object-contain"
             />
-            <div className="text-xl md:text-2xl font-bold text-primary-500 whitespace-nowrap">
-              南京旭日扬光光伏科技有限公司
+            <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-500 whitespace-nowrap">
+              <span className="hidden sm:inline">南京旭日扬光光伏科技有限公司</span>
+              <span className="sm:hidden">旭日扬光光伏</span>
             </div>
           </Link>
 
@@ -54,7 +55,7 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-6 py-3 rounded-lg text-2xl font-medium transition-all duration-200 ${
+                className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-lg lg:text-xl xl:text-2xl font-medium transition-all duration-200 ${
                   isActive(link.path)
                     ? "text-accent-500 bg-accent-50"
                     : "text-gray-600 hover:text-primary-500 hover:bg-gray-50"
@@ -114,7 +115,7 @@ export default function Header() {
       </div>
 
       {/* Spacer for fixed header */}
-      <div className="h-28 md:h-32" />
+      <div className="h-20 md:h-28" />
     </>
   );
 }

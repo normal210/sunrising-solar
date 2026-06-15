@@ -36,7 +36,7 @@ export default function HeroBanner() {
   }, [next]);
 
   return (
-    <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden group">
+    <div className="relative w-full h-[220px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden group">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -52,11 +52,11 @@ export default function HeroBanner() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 to-primary-900/30" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4">
-              <div className="max-w-2xl">
-                <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <div className="max-w-lg md:max-w-2xl">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-2 sm:mb-4 md:mb-6 leading-tight">
                   {slide.title}
                 </h2>
-                <p className="text-2xl md:text-3xl text-primary-100 mb-0">
+                <p className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-primary-100 mb-0">
                   {slide.subtitle}
                 </p>
               </div>
@@ -68,15 +68,15 @@ export default function HeroBanner() {
       {/* Navigation arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all"
       >
-        <ChevronRight className="w-5 h-5" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
       {/* Dots indicator */}
