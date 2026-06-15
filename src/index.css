@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #2d3748;
+  background-color: #f7fafc;
+}
+
+@layer components {
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-primary-500 mb-3;
+  }
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-500 uppercase tracking-widest mb-2;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary-500 text-white rounded-lg
+           hover:bg-primary-600 transition-all duration-300 hover:shadow-lg font-medium;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-accent-400 text-primary-900 rounded-lg
+           hover:bg-accent-500 transition-all duration-300 hover:shadow-lg font-medium;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl;
+  }
+}
