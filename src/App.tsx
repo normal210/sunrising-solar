@@ -7,6 +7,8 @@ import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
 import Cases from "@/pages/Cases";
 import CaseDetail from "@/pages/CaseDetail";
+import SIL from "@/pages/SIL";
+import ArticleDetail from "@/pages/ArticleDetail";
 import Contact from "@/pages/Contact";
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/cases" element={<Cases />} />
             <Route path="/cases/:id" element={<CaseDetail />} />
+            <Route path="/sil" element={<SIL />} />
+            <Route path="/sil/:id" element={<ArticleDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

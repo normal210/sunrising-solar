@@ -2,14 +2,21 @@ import { useState } from "react";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import ProductCard from "@/components/ProductCard";
 import { products, categories } from "@/data/products";
+import { useTranslation } from "@/store/useLanguageStore";
+import { categoryTranslations } from "@/data/contentI18n";
 
 export default function Products() {
   useScrollToTop();
+  const { t, language } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
   const filteredProducts = selectedCategory
     ? products.filter((p) => p.categoryId === selectedCategory)
     : products;
+
+  const getCategoryName = (name: string) => {
+    return language === "zh" ? name : categoryTranslations[name] ?? name;
+  };
 
   return (
     <div>
@@ -17,14 +24,14 @@ export default function Products() {
       <div className="relative h-[160px] sm:h-[200px] md:h-[280px] overflow-hidden">
         <img
           src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=solar%20product%20showroom%2C%20photovoltaic%20panels%20and%20equipment%20display%2C%20modern%20technology&image_size=landscape_16_9"
-          alt="产品中心"
+          alt={t.product.title}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-primary-900/60" />
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto px-4">
-            <p className="text-accent-400 text-sm sm:text-base md:text-lg tracking-widest mb-1 sm:mb-2 md:mb-3">PRODUCTS</p>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white">产品中心</h1>
+            <p className="text-accent-400 text-sm sm:text-base md:text-lg tracking-widest mb-1 sm:mb-2 md:mb-3">{t.product.subtitle}</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white">{t.product.title}</h1>
           </div>
         </div>
       </div>
@@ -41,7 +48,7 @@ export default function Products() {
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
-              全部产品
+              {t.category.all}
             </button>
             {categories.map((cat) => (
               <button
@@ -53,7 +60,7 @@ export default function Products() {
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
-                {cat.name}
+                {getCategoryName(cat.name)}
               </button>
             ))}
           </div>
@@ -70,7 +77,7 @@ export default function Products() {
           </div>
           {filteredProducts.length === 0 && (
             <div className="text-center py-12 sm:py-16 text-gray-400 text-base sm:text-lg md:text-2xl">
-              暂无该分类下的产品
+              {t.product.noProducts}
             </div>
           )}
         </div>

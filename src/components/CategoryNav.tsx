@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Building, BatteryCharging, Trees, Sun as SunIcon, Home as HomeIcon, Car } from "lucide-react";
+import { useTranslation } from "@/store/useLanguageStore";
 
-const categoryItems = [
+const categoryItemsZh = [
   { icon: SunIcon, label: "光伏光热一体化", sublabel: "PVT", color: "bg-orange-500" },
   { icon: BatteryCharging, label: "便携式储能系统", sublabel: "Portable", color: "bg-blue-500" },
   { icon: Trees, label: "露营野外", sublabel: "Outdoor", color: "bg-green-500" },
@@ -10,7 +11,19 @@ const categoryItems = [
   { icon: Car, label: "光伏车棚", sublabel: "Carport", color: "bg-indigo-500" },
 ];
 
+const categoryItemsEn = [
+  { icon: SunIcon, label: "PV-Thermal Hybrid", sublabel: "PVT", color: "bg-orange-500" },
+  { icon: BatteryCharging, label: "Portable Energy Storage", sublabel: "Portable", color: "bg-blue-500" },
+  { icon: Trees, label: "Camping & Outdoor", sublabel: "Outdoor", color: "bg-green-500" },
+  { icon: HomeIcon, label: "Balcony Solar", sublabel: "Balcony", color: "bg-purple-500" },
+  { icon: Building, label: "BIPV", sublabel: "Building PV", color: "bg-teal-500" },
+  { icon: Car, label: "PV Carport", sublabel: "Carport", color: "bg-indigo-500" },
+];
+
 export default function CategoryNav() {
+  const { language } = useTranslation();
+  const categoryItems = language === "zh" ? categoryItemsZh : categoryItemsEn;
+
   return (
     <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
       {categoryItems.map((item) => (

@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "@/store/useLanguageStore";
 
-const slides = [
+const slidesZh = [
   {
     image: "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=solar%20panel%20installation%20on%20modern%20building%20rooftop%2C%20blue%20sky%2C%20professional%20photovoltaic%20system&image_size=landscape_16_9",
     title: "光伏建筑一体化 (BIPV)",
@@ -19,16 +20,36 @@ const slides = [
   },
 ];
 
+const slidesEn = [
+  {
+    image: "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=solar%20panel%20installation%20on%20modern%20building%20rooftop%2C%20blue%20sky%2C%20professional%20photovoltaic%20system&image_size=landscape_16_9",
+    title: "Building Integrated PV (BIPV)",
+    subtitle: "50% Coverage! BIPV to Usher in Trillion-Dollar Growth",
+  },
+  {
+    image: "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=solar%20thermal%20photovoltaic%20hybrid%20system%2C%20PVT%20panel%20on%20roof%2C%20clean%20energy%20technology&image_size=landscape_16_9",
+    title: "PV-Thermal Hybrid System",
+    subtitle: "Comprehensive Utilization Significantly Improves Solar Energy Efficiency",
+  },
+  {
+    image: "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portable%20solar%20energy%20storage%20system%2C%20outdoor%20camping%20power%20station%2C%20green%20energy&image_size=landscape_16_9",
+    title: "Portable Energy Storage",
+    subtitle: "Clean Energy Anytime, Anywhere — Green Life at Your Fingertips",
+  },
+];
+
 export default function HeroBanner() {
   const [current, setCurrent] = useState(0);
+  const { language } = useTranslation();
+  const slides = language === "zh" ? slidesZh : slidesEn;
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const prev = useCallback(() => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   useEffect(() => {
     const timer = setInterval(next, 5000);

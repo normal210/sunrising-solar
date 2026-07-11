@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { path: "/", label: "首页" },
-  { path: "/about", label: "公司简介" },
-  { path: "/products", label: "产品中心" },
-  { path: "/cases", label: "工程案例" },
-  { path: "/contact", label: "联系我们" },
-];
+import { Menu, X, Lightbulb } from "lucide-react";
+import LangToggle from "@/components/LangToggle";
+import { useTranslation } from "@/store/useLanguageStore";
 
 export default function Header() {
   const location = useLocation();
+  const { t, language } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navLinks = [
+    { path: "/", label: t.nav.home },
+    { path: "/about", label: t.nav.about },
+    { path: "/products", label: t.nav.products },
+    { path: "/cases", label: t.nav.cases },
+    { path: "/sil", label: t.nav.sil },
+    { path: "/contact", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -38,15 +42,19 @@ export default function Header() {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between h-20 md:h-28 px-4">
-          <Link to="/" className="flex items-center gap-2 md:gap-4 group">
+          <Link to="/" className="flex items-center gap-2 md:gap-3 group">
             <img
               src="./logo.png"
-              alt="南京旭日扬光光伏科技有限公司"
-              className="h-14 md:h-20 lg:h-24 w-auto object-contain"
+              alt={t.company.logoAlt}
+              className="h-12 md:h-16 lg:h-20 xl:h-24 w-auto object-contain"
             />
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-500 whitespace-nowrap">
-              <span className="hidden sm:inline">南京旭日扬光光伏科技有限公司</span>
-              <span className="sm:hidden">旭日扬光光伏</span>
+            <div className={`font-bold text-primary-500 whitespace-nowrap ${
+              language === "en"
+                ? "text-sm sm:text-base md:text-lg lg:text-xl tracking-tight"
+                : "text-base sm:text-lg md:text-xl lg:text-2xl"
+            }`}>
+              <span className="hidden lg:inline">{t.company.name}</span>
+              <span className="lg:hidden">{t.company.shortName}</span>
             </div>
           </Link>
 
@@ -55,7 +63,11 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-lg lg:text-xl xl:text-2xl font-medium transition-all duration-200 ${
+                className={`px-3 lg:px-5 xl:px-6 py-2 lg:py-3 rounded-lg font-medium transition-all duration-200 ${
+                  language === "en"
+                    ? "text-base lg:text-lg xl:text-xl"
+                    : "text-lg lg:text-xl xl:text-2xl"
+                } ${
                   isActive(link.path)
                     ? "text-accent-500 bg-accent-50"
                     : "text-gray-600 hover:text-primary-500 hover:bg-gray-50"
@@ -64,6 +76,9 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <div className="ml-2 lg:ml-4">
+              <LangToggle variant="default" size="sm" />
+            </div>
           </nav>
 
           <button
@@ -91,10 +106,15 @@ export default function Header() {
       >
         <div className="p-6">
           <div className="flex items-center justify-between mb-8">
-            <span className="text-lg font-bold text-primary-500">导航菜单</span>
+            <span className="text-lg font-bold text-primary-500">
+              {language === "zh" ? "导航菜单" : "Navigation"}
+            </span>
             <button onClick={() => setMobileOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
               <X className="w-5 h-5" />
             </button>
+          </div>
+          <div className="mb-6">
+            <LangToggle variant="outline" size="md" />
           </div>
           <nav className="flex flex-col gap-2">
             {navLinks.map((link) => (
