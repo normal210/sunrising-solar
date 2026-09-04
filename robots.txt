@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sunrising-solar.com/sitemap.xml

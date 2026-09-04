@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面未找到</title>
+  <link rel="stylesheet" href="./assets/index.css">
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen flex items-center justify-center px-4">
+    <div class="text-center">
+      <h1 class="text-6xl font-bold text-primary-500 mb-4">404</h1>
+      <p class="text-gray-500 text-xl mb-8">页面未找到</p>
+      <a href="/" class="btn-primary inline-block px-8 py-3 text-lg">返回首页</a>
+    </div>
+  </div>
+  <script>
+(function(){
+  var path = location.pathname.replace(/\/$/, '');
+  var map = [{"from":"index.html","to":"index.html"},{"from":"about","to":"about/index.html"},{"from":"products","to":"products/index.html"},{"from":"cases","to":"cases/index.html"},{"from":"contact","to":"contact/index.html"},{"from":"products/20/page","to":"products/20/page/index.html"},{"from":"products/19/page","to":"products/19/page/index.html"},{"from":"products/18/page","to":"products/18/page/index.html"},{"from":"products/17/bipv","to":"products/17/bipv/index.html"},{"from":"products/16/balcony-solar","to":"products/16/balcony-solar/index.html"},{"from":"products/15/page","to":"products/15/page/index.html"},{"from":"products/9/page","to":"products/9/page/index.html"},{"from":"products/8/page","to":"products/8/page/index.html"},{"from":"products/7/page","to":"products/7/page/index.html"},{"from":"products/6/page","to":"products/6/page/index.html"},{"from":"products/5/page","to":"products/5/page/index.html"},{"from":"products/4/pv-t","to":"products/4/pv-t/index.html"},{"from":"cases/68/60kw","to":"cases/68/60kw/index.html"},{"from":"cases/67/6kw-6-5","to":"cases/67/6kw-6-5/index.html"},{"from":"cases/64/5kw-5-5","to":"cases/64/5kw-5-5/index.html"},{"from":"cases/63/11kw-12","to":"cases/63/11kw-12/index.html"},{"from":"cases/62/7kw","to":"cases/62/7kw/index.html"},{"from":"cases/61/15kw","to":"cases/61/15kw/index.html"},{"from":"cases/60/12kw","to":"cases/60/12kw/index.html"},{"from":"cases/59/5kw","to":"cases/59/5kw/index.html"},{"from":"cases/58/page","to":"cases/58/page/index.html"},{"from":"cases/57/13kw","to":"cases/57/13kw/index.html"},{"from":"sil/articles/1/bc-perctopconbc","to":"sil/articles/1/bc-perctopconbc/index.html"},{"from":"sil/articles/2/bipv","to":"sil/articles/2/bipv/index.html"},{"from":"sil/articles/3/3","to":"sil/articles/3/3/index.html"},{"from":"sil/articles/4/2026","to":"sil/articles/4/2026/index.html"},{"from":"sil/articles/5/5","to":"sil/articles/5/5/index.html"},{"from":"sil/articles/6/topcon","to":"sil/articles/6/topcon/index.html"}];
+  for (var i = 0; i < map.length; i++) {
+    if (path === map[i].from) { location.href = map[i].to; return; }
+  }
+  if (!path.endsWith('.html') && path !== '') {
+    var withHtml = path + '.html';
+    var img = new Image();
+    img.onerror = function(){ location.href = '/404.html'; };
+    img.src = '.' + withHtml + '?' + Date.now();
+    setTimeout(function(){ if(img.complete) location.href = withHtml; }, 800);
+  }
+})();
+  </script>
+</body>
+</html>
