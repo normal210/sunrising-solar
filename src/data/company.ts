@@ -13,7 +13,7 @@ export const company: CompanyInfo = {
   name: "南京旭日扬光光伏科技有限公司",
   address: "南京市浦口区桥林工业园32-6号",
   phone: "15251836566",
-  emails: ["sunrising_solar@163.com", "sunrising-solar@outlook.com"],
+  emails: ["sunrising_solar@163.com", "sunrising-solar@outlook.com", "solarising2026@outlook.com"],
   qq: "993120700",
   introduction: "南京旭日扬光光伏科技有限公司成立于2014年，是一家专注于光伏发电系统的研发、设计、销售、安装和服务为一体的专业化企业。公司主要产品有：家庭户用光伏并网发电系统、商业屋顶光伏并网发电系统、工厂屋顶光伏并网发电系统、离网光伏发电系统、离网光伏水泵系统、农业大棚光伏系统；公司提供项目咨询、系统设计和技术支持等服务。公司拥有高素质专业化人才队伍，可根据客户的不同需求私人订制最优的系统设计方案，同时拥有不断完善的组织结构和先进的项目管理模式，突出执行项目后继跟踪服务，保证工程质量，真真正正让客户体验一站式，全程无忧的贴心服务。",
   mainBusiness: [

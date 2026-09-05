@@ -109,6 +109,10 @@ export const siteI18n = {
       messagePlaceholder: "请输入您的留言内容...",
       submitMessage: "提交留言",
       messageSuccess: "留言提交成功，我们会尽快与您联系！",
+      contactUs: "联系方式",
+      contactNote: "如有任何问题或合作意向，欢迎通过以下方式与我们联系：发送邮件、拨打电话或添加QQ咨询。我们将在24小时内回复您。",
+      sendEmail: "发送邮件",
+      callUs: "拨打电话",
     },
     footer: {
       companyName: "旭日扬光光伏科技",
@@ -229,6 +233,10 @@ export const siteI18n = {
       messagePlaceholder: "Enter your message...",
       submitMessage: "Submit Message",
       messageSuccess: "Message submitted successfully! We will contact you soon.",
+      contactUs: "Contact Information",
+      contactNote: "If you have any questions or cooperation intentions, please contact us via email, phone or QQ. We will respond within 24 hours.",
+      sendEmail: "Send Email",
+      callUs: "Call Us",
     },
     footer: {
       companyName: "Solarising Technology",

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { company } from "@/data/company";
@@ -8,17 +7,8 @@ import { companyTranslations } from "@/data/contentI18n";
 export default function Contact() {
   useScrollToTop();
   const { t, language } = useTranslation();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
 
   const address = language === "zh" ? company.address : companyTranslations.address;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSubmitted(false), 3000);
-  };
 
   return (
     <div>
@@ -88,56 +78,20 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Contact Note */}
             <div className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-md">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary-500 mb-4 sm:mb-6 md:mb-8">{t.contact.leaveMessage}</h2>
-              {submitted && (
-                <div className="mb-4 sm:mb-6 p-3 sm:p-4 md:p-6 bg-green-50 text-green-700 rounded-xl text-sm sm:text-base md:text-xl">
-                  {t.contact.messageSuccess}
-                </div>
-              )}
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
-                <div>
-                  <label className="block text-sm sm:text-base md:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-                    {t.common.name}
-                  </label>
-                  <input
-                    type="text"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-4 border border-gray-200 rounded-xl text-sm sm:text-base md:text-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 outline-none transition-all"
-                    placeholder={t.contact.namePlaceholder}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm sm:text-base md:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-                    {t.common.email} *
-                  </label>
-                  <input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    required
-                    className="w-full px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-4 border border-gray-200 rounded-xl text-sm sm:text-base md:text-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 outline-none transition-all"
-                    placeholder={t.contact.emailPlaceholder}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm sm:text-base md:text-lg font-medium text-gray-700 mb-1 sm:mb-2">
-                    {t.common.message}
-                  </label>
-                  <textarea
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    rows={4}
-                    className="w-full px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-4 border border-gray-200 rounded-xl text-sm sm:text-base md:text-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 outline-none transition-all resize-none"
-                    placeholder={t.contact.messagePlaceholder}
-                  />
-                </div>
-                <button type="submit" className="btn-primary w-full">
-                  {t.contact.submitMessage}
-                </button>
-              </form>
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary-500 mb-4 sm:mb-6 md:mb-8">{t.contact.contactUs}</h2>
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed">
+                {t.contact.contactNote}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <a href={`mailto:${company.emails[0]}`} className="btn-primary text-center">
+                  {t.contact.sendEmail}
+                </a>
+                <a href={`tel:${company.phone}`} className="btn-secondary text-center">
+                  {t.contact.callUs}
+                </a>
+              </div>
             </div>
           </div>
         </div>
