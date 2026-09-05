@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = resolve(__dirname, '..');
 
-const SITE_URL = 'https://sunrising-solar.com';
+const SITE_URL = 'https://solarising.cn';
 
 // ─── 导入数据（使用动态 import 支持 .ts 模块）──────────────────────────────────────
 const dataModule = await import('./../src/data/index.ts');
