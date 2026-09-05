@@ -3,7 +3,7 @@
  * 运行方式: npx tsx scripts/ssg.ts
  */
 import { resolve, dirname, join } from 'path';
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
@@ -13,6 +13,13 @@ const __dirname = dirname(__filename);
 const root = resolve(__dirname, '..');
 
 const SITE_URL = 'https://solarising.cn';
+
+// ─── 获取 Vite 构建后的实际文件名（带 hash）─────────────────────────────────────
+const assetsDir = join(root, 'dist', 'assets');
+const assetFiles = readdirSync(assetsDir);
+const cssFile = assetFiles.find(f => f.endsWith('.css')) ?? 'index.css';
+const jsFile = assetFiles.find(f => f.endsWith('.js') && !f.endsWith('.map.js')) ?? 'index.js';
+console.log(`  CSS: ${cssFile}, JS: ${jsFile}`);
 
 // ─── 导入数据（使用动态 import 支持 .ts 模块）──────────────────────────────────────
 const dataModule = await import('./../src/data/index.ts');
@@ -86,12 +93,12 @@ function htmlTemplate(meta: string, jsonld: string, content: string) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   ${meta}
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="stylesheet" href="./assets/index.css">
+  <link rel="stylesheet" href="./assets/${cssFile}">
   ${jsonld}
 </head>
 <body>
   <div id="root">${content}</div>
-  <script type="module" src="./assets/index.js"></script>
+  <script type="module" src="./assets/${jsFile}"></script>
 </body>
 </html>`;
 }
@@ -578,7 +585,7 @@ async function main() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>页面未找到</title>
-  <link rel="stylesheet" href="./assets/index.css">
+  <link rel="stylesheet" href="./assets/${cssFile}">
 </head>
 <body class="bg-gray-50">
   <div class="min-h-screen flex items-center justify-center px-4">
