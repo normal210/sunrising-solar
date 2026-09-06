@@ -92,13 +92,13 @@ function htmlTemplate(meta: string, jsonld: string, content: string) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   ${meta}
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="stylesheet" href="./assets/${cssFile}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/${cssFile}">
   ${jsonld}
 </head>
 <body>
   <div id="root">${content}</div>
-  <script type="module" src="./assets/${jsFile}"></script>
+  <script type="module" src="/assets/${jsFile}"></script>
 </body>
 </html>`;
 }
