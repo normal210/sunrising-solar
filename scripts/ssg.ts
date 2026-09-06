@@ -585,7 +585,7 @@ async function main() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>页面未找到</title>
-  <link rel="stylesheet" href="./assets/${cssFile}">
+  <link rel="stylesheet" href="/assets/${cssFile}">
 </head>
 <body class="bg-gray-50">
   <div class="min-h-screen flex items-center justify-center px-4">
